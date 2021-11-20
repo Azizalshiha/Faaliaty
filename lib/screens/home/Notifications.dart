@@ -1,17 +1,15 @@
-import 'dart:ui';
-
-
-import 'package:ttest/shared/const.dart';
+//import 'dart:ui';
+import 'package:provider/shared/const.dart';
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+class Notifications extends StatefulWidget {
+  const Notifications({Key? key}) : super(key: key);
 
   @override
-  _HomeState createState() => _HomeState();
+  _NotificationsState createState() => _NotificationsState();
 }
 
-class _HomeState extends State<Home> {
+class _NotificationsState extends State<Notifications> {
   int _currentIndex = 0;
 
   @override
