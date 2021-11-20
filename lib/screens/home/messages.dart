@@ -1,6 +1,6 @@
-import 'package:ttest/screens/home/chat.dart';
+import 'package:provider/screens/home/chat.dart';
 import 'package:flutter/material.dart';
-import 'package:ttest/shared/const.dart';
+import 'package:provider/shared/const.dart';
 
 
 class Messsges extends StatelessWidget {
