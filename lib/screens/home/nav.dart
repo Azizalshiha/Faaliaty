@@ -1,10 +1,8 @@
-import 'package:ttest/screens/home/add_activity.dart';
-import 'package:ttest/shared/const.dart';
+import 'package:provider/screens/home/add_activity.dart';
 import 'package:flutter/material.dart';
-import 'package:ttest/screens/home/home.dart';
-import 'package:ttest/screens/home/messages.dart';
-import 'package:ttest/screens/home/Search.dart';
-import 'package:ttest/screens/home/profile.dart';
+import 'package:provider/screens/home/notifications.dart';
+import 'package:provider/screens/home/messages.dart';
+import 'package:provider/screens/home/profile.dart';
 
 class nav extends StatefulWidget {
   const nav({Key? key}) : super(key: key);
@@ -18,8 +16,8 @@ class _navState extends State<nav> {
   int _currentIndex = 0;
 
   final screens = [
-    add_activity(),
-    Home(),
+    AddActivity(),
+    Notifications(),
     Messsges(),
     Profile(),
   ];
