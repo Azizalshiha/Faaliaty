@@ -1,4 +1,4 @@
-import 'package:ttest/shared/const.dart';
+import 'package:provider/shared/const.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
