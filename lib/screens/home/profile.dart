@@ -1,6 +1,6 @@
-import 'package:ttest/screens/home/activity.dart';
-import 'package:ttest/screens/home/settings.dart';
-import 'package:ttest/shared/const.dart';
+import 'package:provider/screens/home/activity.dart';
+import 'package:provider/screens/home/settings.dart';
+import 'package:provider/shared/const.dart';
 import 'package:flutter/material.dart';
 
 // notifications screen, activity screen, Explor screen,
@@ -83,140 +83,130 @@ class Profile extends StatelessWidget {
                       ),
                     ),
 
-                    SizedBox(height: 35,),
+                    SizedBox(height: 30,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        InkWell(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => Activity(),
-                            ),
-                          ),
-                          child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                              height: 80,
-                              width: 90,
-                              decoration: smallbox,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Align(
-                                    alignment: Alignment(0,-0.25),
-                                    child: Text(
-                                        '3',
-                                        style: TextStyle(
-                                            color: Color(0xFFFEF9EB),
-                                            fontSize: 24,
-                                            letterSpacing: 0.75,
-                                            fontWeight: FontWeight.bold
-
-                                        )
-                                    ),
-                                  ),
-                                  SizedBox(height: 5,),
-                                  Text(
-                                      'Attended',
+                        Container(
+                            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                            height: 100,
+                            width: 110,
+                            decoration: smallbox,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Align(
+                                  alignment: Alignment(0,-0.25),
+                                  child: Text(
+                                      '3',
                                       style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 15,
+                                          color: Color(0xFFFEF9EB),
+                                          fontSize: 24,
                                           letterSpacing: 0.75,
                                           fontWeight: FontWeight.bold
 
                                       )
                                   ),
-                                  SizedBox(height: 5,),
-                                ],
-                              )
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => Activity(),
-                            ),
-                          ),
-                          child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                              height: 80,
-                              width: 90,
-                              decoration: smallbox,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Align(
-                                    alignment: Alignment(0,-0.25),
-                                    child: Text(
-                                        '1',
-                                        style: TextStyle(
-                                            color: Color(0xFFFEF9EB),
-                                            fontSize: 24,
-                                            letterSpacing: 0.75,
-                                            fontWeight: FontWeight.bold
-                                        )
-                                    ),
-                                  ),
-                                  SizedBox(height: 5,),
-                                  Text(
-                                      'Enrolled',
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 15,
-                                          letterSpacing: 0.75,
-                                          fontWeight: FontWeight.bold
-                                      )
-                                  ),
-                                  SizedBox(height: 5,),
-                                ],
-                              )
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => Activity(),
-                            ),
-                          ),
-                          child: Container(
-                              padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
-                              height: 80,
-                              width: 90,
-                              decoration: smallbox,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Align(
-                                    alignment: Alignment(0,-0.25),
-                                    child: Text(
-                                        '6',
-                                        style: TextStyle(
-                                            color: Color(0xFFFEF9EB),
-                                            fontSize: 24,
-                                            letterSpacing: 0.75,
-                                            fontWeight: FontWeight.bold
+                                ),
+                                SizedBox(height: 5,),
+                                Text(
+                                    'Waiting for',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 14,
+                                        letterSpacing: 0.75,
+                                        fontWeight: FontWeight.bold
 
-                                        )
-                                    ),
-                                  ),
-                                  SizedBox(height: 5,),
-                                  Text(
-                                      'Likes',
-                                      style: TextStyle(
-                                          color: Colors.grey,
-                                          fontSize: 15,
-                                          letterSpacing: 0.75,
-                                          fontWeight: FontWeight.bold
+                                    )
+                                ),
+                                Text(
+                                    'approval',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 14,
+                                        letterSpacing: 0.75,
+                                        fontWeight: FontWeight.bold
 
-                                      )
-                                  ),
-                                  SizedBox(height: 5,),
-                                ],
-                              )
-                          ),
+                                    )
+                                ),
+                                SizedBox(height: 5,),
+                              ],
+                            )
                         ),
+                        Container(
+                            padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                            height: 100,
+                            width: 110,
+                            decoration: smallbox,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                    '+150 SR',
+                                    style: TextStyle(
+                                        color: Color(0xFFFEF9EB),
+                                        fontSize: 21,
+                                        letterSpacing: 0.75,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
+                                SizedBox(height: 15,),
+                                Text(
+                                    'Balance',
+                                    style: TextStyle(
+                                        color: Colors.grey,
+                                        fontSize: 18,
+                                        letterSpacing: 0.75,
+                                        fontWeight: FontWeight.bold
+                                    )
+                                ),
+                                SizedBox(height: 5,),
+                              ],
+                            )
+                        ),
+                        // InkWell(
+                        //   onTap: () => Navigator.push(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //       builder: (_) => Activity(),
+                        //     ),
+                        //   ),
+                        //   child: Container(
+                        //       padding: EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                        //       height: 80,
+                        //       width: 90,
+                        //       decoration: smallbox,
+                        //       child: Column(
+                        //         mainAxisAlignment: MainAxisAlignment.end,
+                        //         children: [
+                        //           Align(
+                        //             alignment: Alignment(0,-0.25),
+                        //             child: Text(
+                        //                 '6',
+                        //                 style: TextStyle(
+                        //                     color: Color(0xFFFEF9EB),
+                        //                     fontSize: 24,
+                        //                     letterSpacing: 0.75,
+                        //                     fontWeight: FontWeight.bold
+                        //                 )
+                        //             ),
+                        //           ),
+                        //           SizedBox(height: 5,),
+                        //           Text(
+                        //               'Likes',
+                        //               style: TextStyle(
+                        //                   color: Colors.grey,
+                        //                   fontSize: 15,
+                        //                   letterSpacing: 0.75,
+                        //                   fontWeight: FontWeight.bold
+                        //
+                        //               )
+                        //           ),
+                        //           SizedBox(height: 5,),
+                        //         ],
+                        //       )
+                        //   ),
+                        // ),
                       ],
                     )
                   ],
