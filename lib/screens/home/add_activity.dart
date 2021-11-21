@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/shared/const.dart';
+import 'package:intl/intl.dart';
 
 
 class AddActivity extends StatefulWidget {
@@ -89,7 +90,7 @@ class _AddActivityState extends State<AddActivity> {
                   ),
                   title: Align(
                     alignment: Alignment(-1.11, 0),
-                    child: Text( _dateTime == DateTime(2021) ? 'Set a date': _dateTime.toString(),
+                    child: Text( _dateTime == DateTime(2021) ? 'Set a date': DateFormat('yyyy-MM-dd').format(_dateTime),
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 16),
