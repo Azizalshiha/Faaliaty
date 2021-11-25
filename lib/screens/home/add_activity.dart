@@ -12,10 +12,30 @@ class AddActivity extends StatefulWidget {
 }
 
 class _AddActivityState extends State<AddActivity> {
-
-  String activityName = '';
+  //for set time
+  bool choice = false;
+  late TimeOfDay time;
+  TimeOfDay? picked;
+  void initState() {
+    super.initState();
+    time = TimeOfDay.now();
+  }
+  Future<Null> selectTime (BuildContext context) async {
+    picked = await showTimePicker(context: context, initialTime: time);
+    if(picked != null) {
+      setState(() {
+        time = picked!;
+        choice = true;
+      });
+    }
+  }
+  //for capacity
+  bool attendance = false;
+  // for price
+  bool isFree = false;
+  //for online
   bool isSwitched = false;
-
+  //for set date
   DateTime _dateTime = DateTime(2021);
 
   @override
@@ -61,10 +81,10 @@ class _AddActivityState extends State<AddActivity> {
               InkWell(
                 onTap: () {
                   showDatePicker(
-                      context: context,
-                      initialDate: _dateTime == null ? DateTime.now() : _dateTime,
-                      firstDate: DateTime(2021),
-                      lastDate: DateTime(2030)
+                    context: context,
+                    initialDate: _dateTime == null ? DateTime.now() : _dateTime,
+                    firstDate: DateTime(2021),
+                    lastDate: DateTime(2030)
                   ).then((date) {
                     setState(() {
                       _dateTime = date!;
@@ -90,7 +110,42 @@ class _AddActivityState extends State<AddActivity> {
                   ),
                   title: Align(
                     alignment: Alignment(-1.11, 0),
-                    child: Text( _dateTime == DateTime(2021) ? 'Set a date': DateFormat('yyyy-MM-dd').format(_dateTime),
+                    child: Text( _dateTime == DateTime(2021) ? 'Set a date': 'Date: ${DateFormat('yyyy-MM-dd').format(_dateTime)}',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 16),
+                    ),
+                  ),
+                  trailing: Icon(
+                    Icons.arrow_forward_ios,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  selectTime(context);
+                },
+                child: ListTile(
+                  leading: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                        color: Colors.amberAccent,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(9.0),
+                          topRight: Radius.circular(9.0),
+                          bottomLeft: Radius.circular(9.0),
+                          bottomRight: Radius.circular(9.0),
+                        )),
+                    child: Icon(
+                      Icons.wb_sunny,
+                      color: Color(0xff222B44),
+                    ),
+                  ),
+                  title: Align(
+                    alignment: Alignment(-1.11, 0),
+                    child: Text( !choice? 'Set a time':'Time: ${time.hour}:${time.minute}',
                       style: TextStyle(
                           fontWeight: FontWeight.w500,
                           fontSize: 16),
@@ -195,7 +250,104 @@ class _AddActivityState extends State<AddActivity> {
                   onChanged: (val) {},
                 ),
               ),
-              SizedBox(height: 8,),
+              ListTile(
+                leading: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: Colors.deepOrangeAccent,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(9.0),
+                        topRight: Radius.circular(9.0),
+                        bottomLeft: Radius.circular(9.0),
+                        bottomRight: Radius.circular(9.0),
+                      )),
+                  child: Center(
+                      child: Icon(
+                        Icons.people,
+                        color: Color(0xff222B44),
+                      )
+                  ),
+                ),
+                title: Align(
+                  alignment: Alignment(-1.18, 0),
+                  child:
+                  !attendance?
+                  Text(
+                    'Capacity',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        fontSize: 16),
+                  )
+                      :
+                  TextField(
+                    keyboardType: TextInputType.number,
+                    decoration: InputDecoration(
+                      labelText: 'Capacity',
+                      hintText: "What's the limit",
+                    ),
+                  ),
+                ),
+                trailing: Switch(
+                  value: attendance,
+                  onChanged: (value) {
+                    setState(() {
+                      attendance = value;
+                    });
+                  },
+                  activeTrackColor: Colors.green,
+                  activeColor: Colors.green,
+                ),
+              ),
+              ListTile(
+                leading: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                      color: !isFree? Colors.lightGreen : Colors.redAccent,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(9.0),
+                        topRight: Radius.circular(9.0),
+                        bottomLeft: Radius.circular(9.0),
+                        bottomRight: Radius.circular(9.0),
+                      )),
+                  child: Center(
+                    child: Icon(
+                      !isFree? Icons.money_off : Icons.attach_money,
+                      color: Color(0xff222B44),
+                    )
+                  ),
+                ),
+                title: Align(
+                  alignment: Alignment(-1.30, 0),
+                  child:
+                    !isFree?
+                      Text(
+                        'Free to attend',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500,
+                            fontSize: 16),
+                      )
+                    :
+                      TextField(
+                        keyboardType: TextInputType.number,
+                        decoration: InputDecoration(
+                          labelText: 'Price',
+                          hintText: 'Price in S.R.',
+                        ),
+                    ),
+                ),
+                trailing: Switch(
+                  value: isFree,
+                  onChanged: (value) {
+                    setState(() {
+                      isFree = value;
+                    });
+                  },
+                  activeTrackColor: Colors.green,
+                  activeColor: Colors.green,
+                ),
+              ),
               Divider(
                 height: 15,
                 thickness: 2,
